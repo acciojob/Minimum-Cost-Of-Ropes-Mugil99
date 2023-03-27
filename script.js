@@ -5,13 +5,15 @@ function calculateMinCost() {
   for (let i = 0; i < inputArr.length; i++) {
   	inputArr[i]=Number(inputArr[i]);
   }
+	inputArr.sort((a,b)=>a-b);
   var cost=0;
 	while (inputArr.length>1) {
-		var newRope=inputArr[0]+inputArr[1];
-		cost+=newRope;
-
-		inputArr.splice(0,2);
-		inputArr.push(newRope);
+		let a=inputArr.shift();
+		let b=inputArr.shift();
+		let merged=a+b;
+		cost+=merged;
+		inputArr.push(merged);
+		inputArr.sort((a,b)=>a-b);
 
 	}
   document.querySelector("#result").textContent=cost;
